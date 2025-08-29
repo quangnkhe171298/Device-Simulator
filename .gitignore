@@ -1,0 +1,28 @@
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# IDE settings
+*.vcxproj.user
+*.csproj.user
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Others
+*.log
+*.tmp
