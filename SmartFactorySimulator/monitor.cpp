@@ -1,14 +1,13 @@
-#include "monitor.h"
+﻿#include "monitor.h"
 #include "device.h"
 #include "utils.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
-
-using namespace std;
-
 #include <cstdlib>
 #include <ctime>
+
+using namespace std;
 
 void clear_screen() {
 #ifdef _WIN32
@@ -19,13 +18,29 @@ void clear_screen() {
 }
 
 void sensor_test() {
-    cout << "Running sensor test";
+    cout << "Running sensor test...\n";
+    srand(time(0));
+
+    bool all_pass = true;
     for (int i = 0; i < 5; i++) {
-        cout << "." << flush; //flush: xa bo dem ngay lap tuc
+        int temp = 20 + rand() % 15;
+        cout << "Temp Reading " << (i + 1) << ": " << temp << "C";
+
+        if (temp > 32) {
+            cout << "  -> FAIL\n";
+            all_pass = false;
+        }
+        else {
+            cout << "  -> OK\n";
+        }
+
         this_thread::sleep_for(chrono::milliseconds(500));
     }
-    cout << "\nSensor test completed successfully.\n";
+
+    if (all_pass) cout << "\nAll sensors OK. Test PASSED.\n";
+    else cout << "\nSome sensors failed! Test FAILED.\n";
 }
+
 
 void realtime_monitor() {
     cout << "Starting real-time monitoring. \n";
